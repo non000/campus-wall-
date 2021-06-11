@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nf.campuswall.dao.AlumniCircleDao">
+
+    <select id="getAllAlu" resultType="AlumniCircleEntity">
+        select alu_uuid, alu_author, alu_title, alu_content, alu_create_time, alu_enclosure
+            from alumni_circle
+            <where>
+                is_alu_state = 1
+            </where>
+    </select>
+    <select id="getAllCommentByBeCommentedUuid" resultType="CommentEntity">
+        select be_commented_uuid, comment_content, comment_like, comment_time, parent_id, child_id
+        from comment
+        <where>
+            is_comment_state = 1 and be_commented_uuid = #{beCommentedUuid}
+        </where>
+    </select>
+
+    <insert id="addAlumniCircle">
+        insert into alumni_circle(alu_uuid, alu_author, alu_title, alu_content, alu_enclosure)
+        values (replace(uuid(),"-",""),
+                #{Alumn.aluAuthor},
+                #{Alumn.aluTitle},
+                #{Alumn.aluContent},
+                #{Alumn.aluEnclosure})
+    </insert>
+
+    <update id="getAlumniCircleByIsReportState">
+        update alumni_circle set is_report_state = 1
+        <where>
+            alu_uuid = #{aluUuid}
+        </where>
+    </update>
+
+    <update id="updateAlumniCircle">
+        update alumni_circle set is_alu_state = 0
+        <where>
+            alu_uuid = #{aluUuid}
+        </where>
+    </update>
+
+    <insert id="addThumb">
+        insert into thumb (model_uuid,user_id) values (#{modelUuid},#{userId})
+    </insert>
+
+    <insert id="addComment">
+        insert into comment (be_commented_uuid, comment_content, comment_like, parent_id, child_id)
+        values  (replace(uuid(),"-",""),
+                #{comment.commentContent},
+                #{comment.commentLike},
+                #{comment.parentId},
+                #{comment.childId})
+    </insert>
+</mapper>

@@ -11,9 +11,10 @@
     <modules>
         <module>campus-wall-dao</module>
         <module>campus-wall-entity</module>
-        <module>campus-wall-utils</module>
+        <module>campus-wall-util</module>
         <module>campus-wall-service</module>
         <module>campus-wall-web</module>
+        <module>campus-wall-vo</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
