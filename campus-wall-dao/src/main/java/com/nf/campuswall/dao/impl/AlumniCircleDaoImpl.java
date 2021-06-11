@@ -1,45 +1,45 @@
 package com.nf.campuswall.dao.impl;
 
+import com.nf.campus.util.SqlSessionFactoryUtil;
 import com.nf.campuswall.dao.AlumniCircleDao;
 import com.nf.campuswall.entity.AlumniCircleEntity;
 import com.nf.campuswall.entity.CommentEntity;
-import com.nf.campuswall.util.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
-
 import java.util.List;
+
 
 public class AlumniCircleDaoImpl implements AlumniCircleDao {
 
     @Override
     public List<AlumniCircleEntity> getAllAlu(int pageNo, int pageSize) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            List<AlumniCircleEntity> list = mapper.getAllAlu(pageNo, pageSize);
-            return list;
+            List<AlumniCircleEntity> allAlu = mapper.getAllAlu(pageNo, pageSize);
+            return allAlu;
         }
     }
 
     @Override
-    public List<CommentEntity> getAllComment(int pageNo, int pageSize) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+    public List<CommentEntity> getAllCommentByBeCommentedUuid(int pageNo, int pageSize, String beCommentedUuid) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            List<CommentEntity> list = mapper.getAllComment(pageNo, pageSize);
-            return list;
+            List<CommentEntity> comment = mapper.getAllCommentByBeCommentedUuid(pageNo, pageSize,beCommentedUuid);
+            return comment;
         }
     }
 
     @Override
     public int addAlumniCircle(AlumniCircleEntity alumniCircleEntity) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            int i = mapper.addAlumniCircle(alumniCircleEntity);
-            return i;
+            int result = mapper.addAlumniCircle(alumniCircleEntity);
+            return result;
         }
     }
 
     @Override
     public int getAlumniCircleByIsReportState(String aluUuid) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
             int state = mapper.getAlumniCircleByIsReportState(aluUuid);
             return state;
@@ -47,29 +47,29 @@ public class AlumniCircleDaoImpl implements AlumniCircleDao {
     }
 
     @Override
-    public int deleteAlumniCircle(String aluUuid) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+    public int updateAlumniCircle(String aluUuid) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            int i = mapper.deleteAlumniCircle(aluUuid);
-            return i;
+            int result = mapper.updateAlumniCircle(aluUuid);
+            return result;
         }
     }
 
     @Override
     public int addThumb(String modelUuid, int userId) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            int i = mapper.addThumb(modelUuid, userId);
-            return i;
+            int result = mapper.addThumb(modelUuid, userId);
+            return result;
         }
     }
 
     @Override
     public int addComment(CommentEntity comment) {
-        try (SqlSession session = SqlSessionFactoryUtil.getSession()) {
+        try (SqlSession session = SqlSessionFactoryUtil.getSqlSession()) {
             AlumniCircleDao mapper = session.getMapper(AlumniCircleDao.class);
-            int i = mapper.addComment(comment);
-            return i;
+            int result = mapper.addComment(comment);
+            return result;
         }
     }
 }

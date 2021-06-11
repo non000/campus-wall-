@@ -10,13 +10,13 @@ public interface AlumniCircleDao {
 
     List<AlumniCircleEntity> getAllAlu(@Param("pageNo") int pageNo,@Param("pageSize") int pageSize);//所有动态
 
-    List<CommentEntity> getAllComment(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize);//所有评论
+    List<CommentEntity> getAllCommentByBeCommentedUuid(@Param("pageNo") int pageNo, @Param("pageSize") int pageSize, @Param("beCommentedUuid") String beCommentedUuid);//所有评论
 
     int addAlumniCircle(@Param("Alumn") AlumniCircleEntity alumniCircleEntity);//发表动态
 
     int getAlumniCircleByIsReportState(@Param("aluUuid") String aluUuid);//举报
 
-    int deleteAlumniCircle(@Param("aluUuid") String aluUuid);//删帖
+    int updateAlumniCircle(@Param("aluUuid") String aluUuid);//删帖
 
     int addThumb(@Param("modelUuid") String modelUuid,@Param("userId") int userId);//点赞
 

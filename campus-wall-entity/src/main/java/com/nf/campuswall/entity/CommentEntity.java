@@ -13,8 +13,8 @@ public class CommentEntity {
     private Integer childId;                    //当前用户ID
     private LocalDateTime commentCreateTime;    //注册时间
     private LocalDateTime gmtModified;          //修改时间
-    private Integer isCommentState;             //删帖状态
-    private Integer isReportState;              //举报状态
+    private Integer CommentState;             //删帖状态
+    private Integer ReportState;              //举报状态
 
     public CommentEntity() {
     }
@@ -26,7 +26,7 @@ public class CommentEntity {
         this.childId = childId;
     }
 
-    public CommentEntity(Integer commentId, String beCommentedUuid, String commentContent, Integer commentLike, LocalDateTime commentTime, Integer parentId, Integer childId, LocalDateTime commentCreateTime, LocalDateTime gmtModified, Integer isCommentState, Integer isReportState) {
+    public CommentEntity(Integer commentId, String beCommentedUuid, String commentContent, Integer commentLike, LocalDateTime commentTime, Integer parentId, Integer childId, LocalDateTime commentCreateTime, LocalDateTime gmtModified, Integer CommentState, Integer ReportState) {
         this.commentId = commentId;
         this.beCommentedUuid = beCommentedUuid;
         this.commentContent = commentContent;
@@ -36,8 +36,8 @@ public class CommentEntity {
         this.childId = childId;
         this.commentCreateTime = commentCreateTime;
         this.gmtModified = gmtModified;
-        this.isCommentState = isCommentState;
-        this.isReportState = isReportState;
+        this.CommentState = CommentState;
+        this.ReportState = ReportState;
     }
 
     public Integer getCommentId() {
@@ -112,20 +112,20 @@ public class CommentEntity {
         this.gmtModified = gmtModified;
     }
 
-    public Integer getIsCommentState() {
-        return isCommentState;
+    public Integer getCommentState() {
+        return CommentState;
     }
 
-    public void setIsCommentState(Integer isCommentState) {
-        this.isCommentState = isCommentState;
+    public void setCommentState(Integer commentState) {
+        this.CommentState = commentState;
     }
 
-    public Integer getIsReportState() {
-        return isReportState;
+    public Integer getReportState() {
+        return ReportState;
     }
 
-    public void setIsReportState(Integer isReportState) {
-        this.isReportState = isReportState;
+    public void setReportState(Integer reportState) {
+        this.ReportState = reportState;
     }
 
     @Override
@@ -140,8 +140,8 @@ public class CommentEntity {
                 ", childId=" + childId +
                 ", commentCreateTime=" + commentCreateTime +
                 ", gmtModified=" + gmtModified +
-                ", isCommentState=" + isCommentState +
-                ", isReportState=" + isReportState +
+                ", isCommentState=" + CommentState +
+                ", isReportState=" + ReportState +
                 '}';
     }
 }

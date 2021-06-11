@@ -4,7 +4,6 @@ import com.nf.campuswall.dao.AlumniCircleDao;
 import com.nf.campuswall.dao.impl.AlumniCircleDaoImpl;
 import com.nf.campuswall.entity.AlumniCircleEntity;
 import com.nf.campuswall.entity.CommentEntity;
-import com.nf.campuswall.util.SqlSessionFactoryUtil;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -16,8 +15,8 @@ public class AlumniCircleServiceImpl{
     }
 
 
-    public List<CommentEntity> getAllComment(int pageNo, int pageSize) {
-        return new AlumniCircleDaoImpl().getAllComment(pageNo,pageSize);
+    public List<CommentEntity> getAllCommentByBeCommentedUuid(int pageNo, int pageSize, String beCommentedUuid) {
+        return new AlumniCircleDaoImpl().getAllCommentByBeCommentedUuid(pageNo,pageSize, beCommentedUuid);
     }
 
 
@@ -32,7 +31,7 @@ public class AlumniCircleServiceImpl{
 
 
     public int deleteAlumniCircle(String aluUuid) {
-        return new AlumniCircleDaoImpl().deleteAlumniCircle(aluUuid);
+        return new AlumniCircleDaoImpl().updateAlumniCircle(aluUuid);
     }
 
 
