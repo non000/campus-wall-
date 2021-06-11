@@ -3,16 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties resource="db.properties"/>
+    <properties resource="db.properties"></properties>
 
     <settings>
         <!--让mybatis的日志输出到控制台-->
         <setting name="logImpl" value="STDOUT_LOGGING"/>
-        <!--        驼峰映射-->
+        <!-- 驼峰映射 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
-        <typeAlias type="com.nf.campuswall.entity.EmployeeEntity" alias="emp"/>
+        <package name="com.nf.campuswall.entity"/>
     </typeAliases>
 
     <environments default="development">
@@ -27,7 +27,6 @@
         </environment>
     </environments>
     <mappers>
-
+        <mapper resource="AlumniCircleMapper.xml"/>
     </mappers>
-
 </configuration>
